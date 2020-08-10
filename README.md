@@ -63,3 +63,15 @@ Solve this by putting skip_before_action :verify_authenticity_token in the appli
 
 
 
+config.session_store :cookie_store, key: '_session', same_site: :strict
+
+config.middleware.insert_before 0, Rack::Cors do
+    allow do
+        origins 'http://localhost:3000', 'http://localhost:3001'
+        resource '*', headers: :any, methods: [:get, :post, :patch, :delete], credentials: true
+    end
+end
+
+config.api_only = false
+
+

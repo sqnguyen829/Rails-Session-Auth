@@ -9,7 +9,7 @@
 User.destroy_all
 Dog.destroy_all
 
-u1 = User.create(username:'admin', password:'admin', age:10)
+u1 = User.create(username:'admin', password:'WebeAdmin123!', age:10)
 u2 = User.create(username:'pleb', password:'pleb', age:5)
 
 dog1 = Dog.create(name:'sky', breed:'germen shepherd', user_id:u1.id)

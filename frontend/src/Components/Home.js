@@ -6,6 +6,7 @@ function Home() {
   return (
     <div>
       <button onClick= {()=> history.push('/login')} >Head to Login</button>
+      <button onClick= {()=> history.push('/logdedin')} >we in</button>
     </div>
   );
 }

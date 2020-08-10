@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :users
   resources :dogs
   post '/login', to:'auth#create'
+  get '/check-login', to:'auth#check_loggin'
 end

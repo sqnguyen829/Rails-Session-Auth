@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router';
 
-function Login() {
+function Login(props) {
+
+  let history = useHistory()
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/check-login', {
+  //     credentials: 'include',
+  //   })
+  //   .then(res => res.json())
+  //   .then(user => {
+  //     console.log(props.currentUser)
+  //     props.setUser(user)
+  //     console.log(props.currentUser)
+  //     if(user.username){
+  //       console.log(user)
+  //       history.push('/')
+  //     }
+  //   })
+  // },[])
 
   let loginHere = (e) => {
     e.preventDefault()
     console.log(e.target.username.value)
     fetch('http://localhost:3000/login',{
+      credentials: 'include',
       method:'POST',
       headers:{ 
         'Content-Type': 'application/json',
@@ -17,7 +37,12 @@ function Login() {
       })
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      props.setUser(data)
+      if(data.username){
+        history.push('/loggedin')
+      }
+    })
   }
 
   return (

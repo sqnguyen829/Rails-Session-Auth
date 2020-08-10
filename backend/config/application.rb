@@ -8,20 +8,19 @@ Bundler.require(*Rails.groups)
 
 module Backend
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    
     config.load_defaults 6.0
+
+    config.session_store :cookie_store, key: '_session', same_site: :strict
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-          origins '*'
-          resource '*', headers: :any, methods: [:get, :post, :patch, :delete]
+          origins 'http://localhost:3000', 'http://localhost:3001'
+          resource '*', headers: :any, methods: [:get, :post, :patch, :delete], credentials: true
       end
     end
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
-    
+    config.api_only = false
+
   end
 end
