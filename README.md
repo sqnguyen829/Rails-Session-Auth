@@ -54,14 +54,14 @@ Home
 Login
 Loggedin
 
-The main thing that to make this work will the the loginHere function in the Login.js, the fetch should be able to hit the controller method we have put the byebug in. Test it.
+The main thing that to makes this work will the the loginHere function in the Login.js, the fetch should be able to hit the controller method we have put the byebug in. Test it.
 
 Errors running into
 
 login:1 Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
 Solve this by putting skip_before_action :verify_authenticity_token in the application controller
 
-
+In config/application.rb add these line of code
 
 config.session_store :cookie_store, key: '_session', same_site: :strict
 
@@ -74,4 +74,7 @@ end
 
 config.api_only = false
 
+######################################################################
+config.session_store :cookie_store, key: '_session', same_site: :strict
 
+The code above allows cookies to persist and be used, and same_site is restricting the usage to only the oringins we allow.

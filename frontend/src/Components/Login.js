@@ -5,22 +5,6 @@ function Login(props) {
 
   let history = useHistory()
 
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/check-login', {
-  //     credentials: 'include',
-  //   })
-  //   .then(res => res.json())
-  //   .then(user => {
-  //     console.log(props.currentUser)
-  //     props.setUser(user)
-  //     console.log(props.currentUser)
-  //     if(user.username){
-  //       console.log(user)
-  //       history.push('/')
-  //     }
-  //   })
-  // },[])
-
   let loginHere = (e) => {
     e.preventDefault()
     console.log(e.target.username.value)

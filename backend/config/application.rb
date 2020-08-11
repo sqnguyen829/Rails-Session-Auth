@@ -11,6 +11,10 @@ module Backend
     
     config.load_defaults 6.0
 
+    #the code 'config.session_store' that was put here allows us to useage cookies and seesions to persist, 
+    #same_site is allowing us access to the info while we are on the origin, but if 
+    #we for instance go to google.com for example the cookies wouldn't be there for that site
+
     config.session_store :cookie_store, key: '_session', same_site: :strict
 
     config.middleware.insert_before 0, Rack::Cors do
