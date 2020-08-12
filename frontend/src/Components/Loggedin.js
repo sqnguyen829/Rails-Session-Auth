@@ -8,6 +8,7 @@ function Loggedin(props) {
     <div>
       <h1>You've logged in {props.currentUser.username}</h1>
       <button onClick= {()=> history.push('/logdedin')} >we in</button>
+      <button onClick= {()=> history.push('/')} >Home</button>
     </div>
   );
 }
