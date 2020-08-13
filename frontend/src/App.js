@@ -9,17 +9,21 @@ function App() {
   let [currentUser, setUser] = useState({})
   let history = useHistory()
 
-  let logout = () => {
-    console.log('done')
-    fetch('http://localhost:3000/logout')
+  let logout = (setDogs) => {
+    setDogs([])
+    //credentials: 'include' , if we plan on change anything that requires session
+    fetch('http://localhost:3000/logout', {
+      credentials: 'include',
+    })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      setUser({})
       history.push('/')
     })
   }
 
   useEffect(() => {
+    //credentials: 'include' , since we are dealing with sessions now
     fetch('http://localhost:3000/check-login', {
       credentials: 'include',
     })
@@ -27,13 +31,11 @@ function App() {
     .then(user => {
       if(user.username){
         setUser(user)
-        console.log(user)
-        history.push('/')
+        history.push('/loggedin')
       }
     })
   },[])
 
-  console.log(currentUser)
   return (
     <Switch>
       <Route exact path ='/' component={ () => <Home /> } />
