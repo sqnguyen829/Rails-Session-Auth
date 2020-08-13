@@ -7,8 +7,7 @@ function Loggedin(props) {
   return (
     <div>
       <h1>You've logged in {props.currentUser.username}</h1>
-      <button onClick= {()=> history.push('/logdedin')} >we in</button>
-      <button onClick= {()=> history.push('/')} >Home</button>
+      <button onClick ={()=> props.logout()}>Logout</button>
     </div>
   );
 }

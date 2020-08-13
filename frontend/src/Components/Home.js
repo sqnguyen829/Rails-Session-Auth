@@ -6,8 +6,6 @@ function Home(props) {
   return (
     <div>
       <button onClick= {()=> history.push('/login')} >Head to Login</button>
-      <button onClick= {()=> history.push('/logdedin')} >we in</button>
-      <button onClick ={()=> props.logout()}>Logout</button>
     </div>
   );
 }

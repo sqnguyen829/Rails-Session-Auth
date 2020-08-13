@@ -8,14 +8,14 @@ import { useHistory } from 'react-router';
 function App() {
   let [currentUser, setUser] = useState({})
   let history = useHistory()
+
   let logout = () => {
     console.log('done')
-    fetch('http://localhost:3000/logout',{
-      credentials: 'include'
-    })
+    fetch('http://localhost:3000/logout')
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      history.push('/')
     })
   }
 
@@ -36,9 +36,9 @@ function App() {
   console.log(currentUser)
   return (
     <Switch>
-      <Route exact path ='/' component={ () => <Home logout ={logout}/> } />
+      <Route exact path ='/' component={ () => <Home /> } />
       <Route exact path ='/login' component= { () => <Login setUser = {setUser} currentUser = {currentUser}/> }/>
-      <Route exact path ='/loggedin' component={ () => <Loggedin currentUser = { currentUser }/> }/>
+      <Route exact path ='/loggedin' component={ () => <Loggedin currentUser = { currentUser } logout ={logout}/> }/>
     </Switch>
   );
 }
