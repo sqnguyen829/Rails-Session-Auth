@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 function App() {
   let [currentUser, setUser] = useState({})
   let history = useHistory()
-  
+
   let logout = (setDogs) => {
     setDogs([])
     //credentials: 'include' , if we plan on change anything that requires session
@@ -36,7 +36,10 @@ function App() {
         history.push('/login')
       }
     })
-  },[])
+    //Adding history to the dependency array will get rid of this error message
+    //React Hook useEffect has a missing dependency: 'history'. 
+    //Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  },[history])
 
   return (
     <Switch>
