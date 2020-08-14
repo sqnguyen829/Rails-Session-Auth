@@ -7,7 +7,6 @@ class AuthController < ApplicationController
         #checks if the user object was found and then checks if the typied password matches the password of the user object
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            byebug
             render json: {username:user.username, id:user.id, age:user.age}
         else
             render json: {error:'Failed login'}
