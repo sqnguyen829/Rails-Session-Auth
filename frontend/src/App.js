@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 function App() {
   let [currentUser, setUser] = useState({})
   let history = useHistory()
-
+  
   let logout = (setDogs) => {
     setDogs([])
     //credentials: 'include' , if we plan on change anything that requires session
@@ -32,6 +32,8 @@ function App() {
       if(user.username){
         setUser(user)
         history.push('/loggedin')
+      } else {
+        history.push('/login')
       }
     })
   },[])

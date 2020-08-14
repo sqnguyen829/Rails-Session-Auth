@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { useHistory } from 'react-router';
+import DogContainer from './DogContainer'
 
 function Loggedin(props) {
 
@@ -12,17 +12,19 @@ function Loggedin(props) {
         fetch('http://localhost:3000/dogs')
         .then(res => res.json())
         .then(dogData => {
+            console.log(dogData)
             if(isMounted){
                 setDogs(dogData)
             }
         })
         return () => { isMounted = false } // use effect cleanup to set flag false, if unmounted
       },[])
-      console.log(dogs)
+
   return (
     <div>
-      <h1>You've logged in {props.currentUser.username}</h1>
-      <button onClick ={()=> props.logout(setDogs)}>Logout</button>
+        <h1>You've logged in {props.currentUser.username}</h1>
+        <button onClick ={()=> props.logout(setDogs)}>Logout</button>
+        <DogContainer dogs={dogs}/>
     </div>
   );
 }
