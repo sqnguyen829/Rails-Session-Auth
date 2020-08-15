@@ -12,7 +12,6 @@ function Loggedin(props) {
         fetch('http://localhost:3000/dogs')
         .then(res => res.json())
         .then(dogData => {
-            console.log(dogData)
             if(isMounted){
                 setDogs(dogData)
             }

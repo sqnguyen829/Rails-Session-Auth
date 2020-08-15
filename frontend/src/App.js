@@ -11,18 +11,21 @@ function App() {
 
   let logout = (setDogs) => {
     setDogs([])
+
     //credentials: 'include' , if we plan on change anything that requires session
     fetch('http://localhost:3000/logout', {
       credentials: 'include',
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data)
       setUser({})
       history.push('/')
     })
   }
 
   useEffect(() => {
+
     //credentials: 'include' , since we are dealing with sessions now
     fetch('http://localhost:3000/check-login', {
       credentials: 'include',
@@ -36,6 +39,7 @@ function App() {
         history.push('/login')
       }
     })
+
     //Adding history to the dependency array will get rid of this error message
     //React Hook useEffect has a missing dependency: 'history'. 
     //Either include it or remove the dependency array  react-hooks/exhaustive-deps

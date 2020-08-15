@@ -7,7 +7,7 @@ function Login(props) {
 
   let loginHere = (e) => {
     e.preventDefault()
-    console.log(e.target.username.value)
+    
     fetch('http://localhost:3000/login',{
       credentials: 'include',
       method:'POST',
@@ -22,8 +22,8 @@ function Login(props) {
     })
     .then(res => res.json())
     .then(data => {
-      props.setUser(data)
       if(data.username){
+        props.setUser(data)
         history.push('/loggedin')
       }
     })

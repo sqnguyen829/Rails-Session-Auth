@@ -1,5 +1,4 @@
 class AuthController < ApplicationController
-    # skip_before_action :check_authentication, only: [:create]
     
     def create
         #looks for the user by the username
@@ -13,6 +12,7 @@ class AuthController < ApplicationController
         end
     end
 
+    #this method will run first thing when the page renders thanks to the useEffect that was set up in App.js
     def check_loggin
         if session[:user_id]
             user = User.find(session[:user_id])
@@ -22,6 +22,7 @@ class AuthController < ApplicationController
         end
     end
 
+    #simple method to remove session
     def logout
         session[:user_id] = nil
         render json: {error:'Logged out'}

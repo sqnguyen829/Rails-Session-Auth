@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-function Home(props) {
+function Home() {
     let history = useHistory()
   return (
     <div>

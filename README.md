@@ -13,8 +13,6 @@ add these gems to the gemfile
 
 gem 'bcrypt', '~> 3.1.7'
 
-gem "jwt","~> 2.1"
-
 gem 'rack-cors'
 
 
@@ -74,7 +72,7 @@ Solve this by putting skip_before_action :verify_authenticity_token in the appli
 
 In config/application.rb add these line of code
 
-############################################################################################################
+################################################################
 
 config.session_store :cookie_store, key: '_session', same_site: :strict
 
@@ -93,7 +91,7 @@ end
 
 config.api_only = false
 
-############################################################################################################
+################################################################
 
 
 config.session_store :cookie_store, key: '_session', same_site: :strict
