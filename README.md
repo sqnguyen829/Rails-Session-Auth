@@ -12,7 +12,6 @@ Backend-setup
 add these gems to the gemfile
 
 gem 'bcrypt', '~> 3.1.7'
-
 gem 'rack-cors'
 
 
@@ -24,7 +23,7 @@ rails g model User username password_digest age:integer
 
 rails g model Dog name breed user_id:integer
 
-add relationship to model
+add relationship to model (make sure to also add ' has_secure_password ' to the user model)
 
 add seed info
 
@@ -49,9 +48,10 @@ Will come back to this later.
 
 Moved to the frontend cleared out the code in the App.js file
 
-
 We'll start making a few components to simulate logging in
 Component build order
+
+SesssionApp(Mainly for the route this could be done better)
 
 App
 
@@ -68,7 +68,6 @@ Errors running into
 
 login:1 Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
 Solve this by putting skip_before_action :verify_authenticity_token in the application controller
-
 
 In config/application.rb add these line of code
 
@@ -97,3 +96,5 @@ config.api_only = false
 config.session_store :cookie_store, key: '_session', same_site: :strict
 
 The code above allows cookies to persist and be used, and same_site is restricting the usage to only the oringins we allow.
+
+
