@@ -13,6 +13,7 @@ function App() {
     setDogs([])
 
     //credentials: 'include' , if we plan on change anything that requires session
+    //it allows us to use cookies
     fetch('http://localhost:3000/logout', {
       credentials: 'include',
     })
